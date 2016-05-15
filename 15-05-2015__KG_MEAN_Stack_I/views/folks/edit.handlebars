@@ -1,0 +1,18 @@
+<div class="content">
+  <h1>ID {{folk._id}}</h1>
+  <form action="/folks/{{folk._id}}/edit" method="POST" name="updatefolk" enctype="application/x-www-form-urlencoded">
+    <p>
+      Name : <input type="text" value="{{folk.name}}" name="name">
+    </p>
+    <p>
+      Age : <input type="number" value="{{folk.age}}" name="age">
+    </p>
+    <p>
+      Role : <input type="text" value="{{folk.role}}" name="role">
+    </p>
+    <input type="hidden" value="PUT" name="_method">
+    <p>
+      <button type="submit">Update</button>
+    </p>
+  </form>
+</div>

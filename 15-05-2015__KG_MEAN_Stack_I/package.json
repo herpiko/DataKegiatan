@@ -1,0 +1,22 @@
+{
+  "name": "mongodb-express-simple-crud",
+  "version": "1.0.0",
+  "description": "Kelas GLiB",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "kelasglib"
+  ],
+  "author": "GLiB",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.5",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.4.17"
+  }
+}

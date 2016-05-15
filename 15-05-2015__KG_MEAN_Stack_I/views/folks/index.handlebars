@@ -1,0 +1,16 @@
+<h1>{{title}}</h1>
+<div>
+  <ul>
+    {{#each folks}}
+      <li>
+        {{name}} 
+        <form action="/folks/{{_id}}/edit" method="POST" class="inline">
+          <input type="hidden" value="DELETE" name="_method">
+          <button type="submit">delete</button>
+        </form>
+        <a href="/folks/{{_id}}/edit"><button>edit</button></a>
+        <a href="/folks/{{_id}}"><button>show</button></a>
+      </li>
+    {{/each}}
+  </ul>
+</div>
