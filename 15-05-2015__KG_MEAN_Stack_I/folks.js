@@ -21,9 +21,16 @@ router.route('/')
     if (err) {
       return res.send(err);  // Tangkap galat
     }
-    res.render('folks/index',{ // Render berkas view folks/index.html, oper nilai title dan folks
-      title : 'Pejuang',
-      folks : result
+    res.format({
+      html : function() {
+        res.render('folks/index',{ // Render berkas view folks/index.html, oper nilai title dan folks
+          title : 'Pejuang',
+          folks : result
+        })
+      },
+      json : function(){
+        res.json(result)
+      }
     })
   })
 })
@@ -36,7 +43,14 @@ router.route('/')
     if (err) {
       return res.send(err);  // Tangkap galat
     }
-    res.redirect('/folks'); // Alihkan ke halaman http://localhost:3000/folks
+    res.format({
+      html : function() {
+        res.redirect('/folks'); // Alihkan ke halaman http://localhost:3000/folks
+      },
+      json : function() {
+        res.json({success : true})
+      }
+    })
   })
 })
 
@@ -60,9 +74,16 @@ router.route('/:id') // Tangani router yang memiliki parameter id, contoh http:/
       return res.send(err);  // Tangkap galat
     }
     console.log(result);
-    res.render('folks/show',{ // Render berkas view folks/show.html, oper nilai title dan folks
-      title : 'Pejuang',
-      folk : result
+    res.format({
+      html : function() {
+        res.render('folks/show',{ // Render berkas view folks/show.html, oper nilai title dan folks
+          title : 'Pejuang',
+          folk : result
+        })
+      },
+      json : function() {
+        res.json(result);
+      }
     })
   })
 })
@@ -73,13 +94,21 @@ router.route('/:id/edit') // Tangani router untuk menyunting berkas,  contoh htt
     if (err) {
       return res.send(err);  // Tangkap galat
     }
-    res.render('folks/edit',{  // Render berkas view folks/edit.html, oper nilai title dan folks
-      title : 'Pejuang',
-      folk : result
+    res.format({
+      html : function() {
+        res.render('folks/edit',{  // Render berkas view folks/edit.html, oper nilai title dan folks
+          title : 'Pejuang',
+          folk : result
+        })
+      },
+      json : function() {
+        res.json(result);
+      }
     })
   })
 })
 .put(function(req, res) { // PUT http://localhost:3000/folks/123/edit  // Perbarui item 
+  console.log(req.body);
   folksModel.findById(req.id, function(err, folk) { // cari berdasarkan req.id
     folk.update({                 // Kemudian diperbarui
       name : req.body.name,       // Nilai POST diambil dari req.body.namafield
@@ -89,7 +118,14 @@ router.route('/:id/edit') // Tangani router untuk menyunting berkas,  contoh htt
       if (err) {
         return res.send(err);  // Tangkap galat
       }
-      res.redirect('/folks');  // alihkan ke http://localhost:3000/folks
+      res.format({
+        html : function() {
+          res.redirect('/folks');  // alihkan ke http://localhost:3000/folks
+        },
+        json : function() {
+          res.json(result);
+        }
+      })
     })
   })
 })
@@ -98,7 +134,14 @@ router.route('/:id/edit') // Tangani router untuk menyunting berkas,  contoh htt
     if (err) {
       return res.send(err);  // Tangkap galat
     }
-    res.redirect('/folks');  // alihkan ke http://localhost:3000/folks
+    res.format({
+      html : function() {
+        res.redirect('/folks');  // alihkan ke http://localhost:3000/folks
+      },
+      json : function() {
+        res.json({success: true});
+      }
+    })
   })
 })
 
