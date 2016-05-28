@@ -1,15 +1,15 @@
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/kelasglib');
+var mongoose = require('mongoose'); // panggil modul
+mongoose.connect('mongodb://localhost/kelasglib'); // konek ke database kelasglib
 
-var folkSchema = mongoose.Schema({
+var folkSchema = mongoose.Schema({ // Tentukan skema
   name : String,
   role : String,
   age : Number,
 });
 
-mongoose.model('Folk', folkSchema);
+mongoose.model('Folk', folkSchema); // Daftarkan skema sebagai model
 
-module.exports = mongoose.model('Folk');
+module.exports = mongoose.model('Folk'); // Ekspor model
 
 // Another example, please uncomment
 /*
